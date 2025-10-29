@@ -1,0 +1,1 @@
+return reduce(lambda x, y: x & y, map(Counter, words)).elements()
