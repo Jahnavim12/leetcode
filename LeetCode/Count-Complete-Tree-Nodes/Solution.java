@@ -16,11 +16,33 @@
 16class Solution {
 17    public int countNodes(TreeNode root) {
 18        if(root==null) return 0;
-19        if(root.left==null && root.right==null){
-20            return 1;
-21        }
-22        int left=countNodes(root.left);
-23        int right=countNodes(root.right);
-24        return left+right+1;
-25    }
-26}
+19
+20        int lh=leftHeight(root);
+21        int rh=rightHeight(root);
+22
+23        if(lh==rh) {
+24            return (1<<lh)-1;
+25        }
+26
+27        return 1+countNodes(root.left)+countNodes(root.right);
+28    }
+29
+30    private int leftHeight(TreeNode node) {
+31        int h=0;
+32        while(node!=null) {
+33            h++;
+34            node=node.left;
+35        }
+36        return h;
+37    }
+38
+39    private int rightHeight(TreeNode node) {
+40        int h=0;
+41        while(node!=null) {
+42            h++;
+43            node=node.right;
+44        }
+45        return h;
+46    }
+47}
+48
