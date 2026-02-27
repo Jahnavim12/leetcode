@@ -15,15 +15,21 @@
 15 */
 16class Solution {
 17    public List<Integer> preorderTraversal(TreeNode root) {
-18       // if(root==null) return;
-19        List<Integer> a=new ArrayList<>();
-20        preOrderHelp(root,a);
-21        return a;
-22    }
-23    void preOrderHelp(TreeNode root,List<Integer> ans){
-24        if(root==null) return;
-25        ans.add(root.val);
-26        preOrderHelp(root.left,ans);
-27        preOrderHelp(root.right,ans);
-28    }
-29}
+18        List<Integer> ans=new ArrayList<>();
+19        if(root==null){ return ans;}
+20        Stack<TreeNode> s=new Stack<>();
+21        s.push(root);
+22        while(!s.isEmpty()){
+23            TreeNode x=s.pop();
+24            ans.add(x.val);
+25            if(x.right!=null){
+26                s.push(x.right);
+27            }
+28            if(x.left!=null){
+29                s.push(x.left);
+30            }
+31        }
+32          return ans;
+33        
+34    }
+35}
