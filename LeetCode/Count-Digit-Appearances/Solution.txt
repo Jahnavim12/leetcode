@@ -1,0 +1,18 @@
+1class Solution {
+2    public int countDigitOccurrences(int[] nums, int digit) {
+3        int[] num=nums;
+4        int count=0;
+5        for(int numss: num){
+6            if(numss == 0 && digit == 0){
+7                count++;
+8            }
+9            while(numss>0){
+10                if(numss % 10 == digit){
+11                    count++;
+12                }
+13                numss /= 10;
+14            }
+15        }
+16        return count;
+17    }
+18}
