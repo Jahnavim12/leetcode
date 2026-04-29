@@ -1,16 +1,20 @@
 1class Solution {
 2    public boolean isAnagram(String s, String t) {
-3        if (s.length() != t.length()) return false;
-4        char[] ch=s.toCharArray();
-5        char[] ch2=t.toCharArray();
-6        Arrays.sort(ch);
-7        Arrays.sort(ch2);
-8        String str=new String(ch);
-9        String str2=new String(ch2);
-10        if(str.equals(str2)){
-11            return true;
-12        }
-13        return false;
-14    }
-15}
-16
+3        if(s.length()!=t.length()) return false;
+4        Map<Character,Integer> freq=new HashMap<>();
+5        for(char ch:s.toCharArray()){
+6            freq.put(ch,freq.getOrDefault(ch,0)+1);
+7        }
+8       for(char ch:t.toCharArray()){
+9        if(!freq.containsKey(ch)){
+10          return false;
+11        }
+12        else{
+13            freq.put(ch,freq.get(ch)-1);
+14            if(freq.get(ch)==0)
+15            freq.remove(ch);
+16        }
+17       }
+18       return freq.isEmpty();
+19    }
+20}
