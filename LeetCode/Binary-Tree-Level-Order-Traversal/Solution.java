@@ -1,33 +1,39 @@
 1/**
 2 * Definition for a binary tree node.
-3 * struct TreeNode {
+3 * public class TreeNode {
 4 *     int val;
-5 *     TreeNode *left;
-6 *     TreeNode *right;
-7 *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-8 *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-9 *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-10 * };
-11 */
-12class Solution {
-13public:
-14    vector<vector<int>> levelOrder(TreeNode* root) {
-15        vector<vector<int>> outer;
-16        if(!root) return outer;
-17        queue<TreeNode*> q;
-18        q.push(root);
-19        while(!q.empty()){
-20            int sz=q.size();
-21            vector<int> inner;
-22            while(sz-->0){
-23                auto f=q.front();
-24                q.pop();
-25                inner.push_back(f->val);
-26                if(f->left) q.push(f->left);
-27                if(f->right) q.push(f->right);
-28            }
-29            outer.push_back(inner);
-30        }
-31        return outer;
-32    }
-33};
+5 *     TreeNode left;
+6 *     TreeNode right;
+7 *     TreeNode() {}
+8 *     TreeNode(int val) { this.val = val; }
+9 *     TreeNode(int val, TreeNode left, TreeNode right) {
+10 *         this.val = val;
+11 *         this.left = left;
+12 *         this.right = right;
+13 *     }
+14 * }
+15 */
+16class Solution {
+17    public List<List<Integer>> levelOrder(TreeNode root) {
+18        List<List<Integer>> res=new ArrayList<>();
+19        if(root==null) return res;
+20        Queue<TreeNode> q=new LinkedList<>();
+21        q.offer(root);
+22        while(!q.isEmpty()){
+23            int size=q.size();
+24            List<Integer> lvl=new ArrayList<>();
+25            for(int i=0;i<size;i++){
+26                TreeNode curr=q.poll();
+27                lvl.add(curr.val);
+28                if(curr.left!=null){
+29                    q.offer(curr.left);
+30                }
+31                if(curr.right!=null){
+32                    q.offer(curr.right);
+33                }
+34            }
+35                res.add(lvl);
+36        }
+37        return res;
+38    }
+39}
