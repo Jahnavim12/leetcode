@@ -1,0 +1,25 @@
+1class Solution {
+2    public int rotatedDigits(int n) {
+3        int count =0;
+4        for(int i =0;i<=n;i++){
+5            if(isGood(i)){
+6                count++;
+7            }
+8        }
+9        return count;
+10    }
+11    public boolean isGood(int m){
+12        boolean diff = false;
+13        while(m>0){
+14            int n = m%10;
+15            if( n == 3||n ==4||n == 7){
+16                return false;
+17            }
+18            if(n== 2 || n== 5 || n==6 || n==9){
+19                diff =  true;
+20            }
+21            m/=10;
+22        }
+23        return diff;
+24    }
+25}
