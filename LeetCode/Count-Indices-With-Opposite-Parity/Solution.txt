@@ -1,0 +1,17 @@
+1class Solution {
+2    public int[] countOppositeParity(int[] nums) {
+3        int[] res=new int[nums.length];
+4        int ec=0,oc=0;
+5        for(int i=nums.length-1;i>=0;i--){
+6            if(nums[i]%2==0){
+7                res[i]=oc;
+8                ec++;
+9            }
+10            else{
+11                res[i]=ec;
+12                oc++;
+13            }
+14        }
+15        return res;
+16    }
+17}
