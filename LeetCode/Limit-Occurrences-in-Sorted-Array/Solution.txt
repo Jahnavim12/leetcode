@@ -1,0 +1,16 @@
+1class Solution {
+2    public int[] limitOccurrences(int[] nums, int k) {
+3        int i=0;
+4        for(int j=0;j<nums.length;j++){
+5            if(i<k || nums[j]!=nums[i-k]){
+6                nums[i]=nums[j];
+7                i++;
+8            }
+9        }
+10        int[] res=new int[i];
+11        for(int l=0;l<i;l++){
+12            res[l]=nums[l];
+13        }
+14        return res;
+15    }
+16}
