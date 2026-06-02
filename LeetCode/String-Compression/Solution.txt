@@ -1,0 +1,21 @@
+1class Solution {
+2    public int compress(char[] chars) {
+3        int i=0;
+4        int idx=0;
+5        while(i<chars.length){
+6            char cur=chars[i];
+7            int c=0;
+8            while(i<chars.length && chars[i]==cur){
+9                i++;
+10                c++;
+11            }
+12            chars[idx++]=cur;
+13            if(c>1){
+14                for(char cc: String.valueOf(c).toCharArray()){
+15                    chars[idx++]=cc;
+16                }
+17            }
+18        }
+19        return idx;
+20    }
+21}
