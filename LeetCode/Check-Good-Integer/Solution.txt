@@ -1,0 +1,12 @@
+1class Solution {
+2    public boolean checkGoodInteger(int n) {
+3        int ds=0;int sq=0;
+4        while(n>0){
+5            int d=n%10;
+6            ds+=d;
+7            sq+=d*d;
+8            n/=10;
+9        }
+10        return sq-ds>=50;
+11    }
+12}
