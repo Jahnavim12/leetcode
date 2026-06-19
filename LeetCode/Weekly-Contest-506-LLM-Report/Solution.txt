@@ -1,0 +1,13 @@
+1class Solution {
+2public:
+3    bool checkGoodInteger(int n) {
+4        int diff = 0; // squareSum - digitSum
+5        while (n > 0) {
+6            int d = n % 10;
+7            diff += d * d - d;
+8            if (diff >= 50) return true;
+9            n /= 10;
+10        }
+11        return false;
+12    }
+13};
