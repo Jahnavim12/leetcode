@@ -1,0 +1,26 @@
+1class Solution{
+2    public int maxDigitRange(int[] nums){
+3        int max=-1;
+4        int ans=0;
+5        for (int x:nums){
+6            int n=x;
+7            int big=0;
+8            int small=9;
+9
+10            while(n>0){
+11                int d=n%10;
+12                if(d>big) big=d;
+13                if(d<small) small=d;
+14                n/=10;
+15            }
+16            int diff=big-small;
+17            if (diff>max){
+18                max=diff;
+19                ans=x;
+20            } else if(diff==max){
+21                ans+=x;
+22            }
+23        }
+24        return ans;
+25    }
+26}
