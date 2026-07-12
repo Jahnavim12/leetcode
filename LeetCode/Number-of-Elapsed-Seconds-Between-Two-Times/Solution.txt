@@ -1,0 +1,13 @@
+1class Solution {
+2    public int secondsBetweenTimes(String startTime, String endTime) {
+3        int start=seconds(startTime);
+4        int end=seconds(endTime);
+5        return end-start;
+6    }
+7    private static int seconds(String time){
+8        int h=Integer.parseInt(time.substring(0,2));
+9        int m=Integer.parseInt(time.substring(3,5));
+10        int s=Integer.parseInt(time.substring(6,8));
+11        return h*3600+m*60+s;
+12    }
+13}
