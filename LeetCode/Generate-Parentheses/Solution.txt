@@ -1,0 +1,16 @@
+1class Solution {
+2public:
+3    vector<string> generateParenthesis(int n) {
+4        vector<string> res;
+5        backtrack(res, "", 0, 0, n);
+6        return res;
+7    }
+8    void backtrack(vector<string>& res, string curr, int open, int close, int n){
+9        if(curr.length() == 2*n){
+10            res.push_back(curr);
+11            return;
+12        }
+13        if(open < n) backtrack(res, curr+"(", open+1, close, n);
+14        if(close < open) backtrack(res, curr+")", open, close+1, n);
+15    }
+16};
