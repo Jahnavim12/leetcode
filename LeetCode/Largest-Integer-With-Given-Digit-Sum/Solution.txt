@@ -1,0 +1,14 @@
+1class Solution {
+2    public int largestInteger(int n, int s) {
+3        if(s==0) return 0;
+4        if(s>9*n) return -1;
+5        int res=0;
+6        for(int i=0;i<n;i++){
+7            int d=Math.min(s,9);
+8            res=res*10+d;
+9            s-=d;
+10            
+11        }
+12        return res;
+13    }
+14}
