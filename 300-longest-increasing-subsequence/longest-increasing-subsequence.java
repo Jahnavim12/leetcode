@@ -1,7 +1,7 @@
 class Solution {
-    //static int[][] dp=new int[1001][1001];
+
     public int lengthOfLIS(int[] nums) {
-   //  int[][] dp=new int[1001][1001];
+   
         Set<Integer> st=new TreeSet<>();
         for(int x:nums){
             st.add(x);
@@ -10,7 +10,7 @@ class Solution {
         int i=0;
         for(int x:st){
             nums2[i]=x;
-            i++; //System.out.print(x+" ");
+            i++; 
         }
 
         return lcslen(nums,nums2);
@@ -18,7 +18,7 @@ class Solution {
     int lcslen(int[] a,int[] b){
         int n1=a.length;
         int n2=b.length;
-        int[][] dp=new int[n1+1][n2+1];
+       int[][] dp=new int[n1+1][n2+1];
          for(int i=n1-1;i>=0;i--){
             for(int j=n2-1;j>=0;j--){
                 if(a[i]==b[j]){
